@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page Title</title>
+  <meta charset="utf-8">
+
+  <style type="text/css">
+    html { background-color: red; }
+    .button {
+      border: 1px solid black;
+      width: 200px;
+      height: 50px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <h1>This is an HTML Header</h1>
+  <div id="alert_message">&nbsp;</div>
+  <div>Score: <span id="score_display">n/a</span></div>
+  <div id="increment_score_button" class="button" onClick="incrementScore()">BUTTON</div>
+  <form>
+    Name: <input id="name_field" type="text" ></input>
+  </form>
+</body>
+
+  <script type="text/javascript">
+    var score = 0;
+    var button = document.getElementById("increment_score_button");
+    var scoreDisplay = document.getElementById("score_display");
+    var alertMessage = document.getElementById("alert_message");
+    
+    function init() {
+      button.innerHTML = 'Tap here to increment score.';
+      updateScoreDisplay();
+    };
+    
+    function updateScoreDisplay() {
+      scoreDisplay.innerHTML = score;
+    };
+    
+    function incrementScore() {
+      score += 100;
+      updateScoreDisplay();
+      
+      if (score>=500) {
+        // tell iOS to enable the button
+        window.location.href="html5demo://enable-button";
+      }
+    };
+    
+    function setAlertMessage(text) {
+      alertMessage.innerHTML = text;
+    }
+  </script>
+
+</html>
